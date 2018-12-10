@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
+using System.Xml.Linq;
 
 namespace ME_Commission
 {
@@ -48,6 +49,17 @@ namespace ME_Commission
                 OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
                     DataTable data = new DataTable();
                 sda.Fill(data);
+
+                foreach (DataRow dr in data.Rows)
+                {
+                    if (Convert.ToDouble(dr[3])>0)
+                    {
+                        var ddd = 0;
+
+                    }
+                }
+
+
                 //grid_items.DataSource = data;
             }
 

@@ -23,7 +23,7 @@ namespace ME_Commission
             bool logged = false;
             using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = "Data Source=DELL3670WIN10OE;Initial Catalog=RC;User ID=sa;Password=Vx@7190";
+                conn.ConnectionString = "Data Source=DELLWORK;Initial Catalog=RC;User ID=sa;Password=Vx@7190";
                 conn.Open();
                 // Create the command
                 SqlCommand command = new SqlCommand("select USER_ID, USER_PASSWORD from USER_MASTER ", conn);

@@ -43,12 +43,18 @@ namespace ME_Commission
                             ";Extended Properties='Excel 8.0;HDR=YES;';";
 
                 OleDbConnection con = new OleDbConnection(constr);
-                OleDbCommand oconn = new OleDbCommand("Select * From [" + name + "$]", con);
+                OleDbCommand oconn = new OleDbCommand("Select mecode, me, conno, schno, st_schmon, tinv_no, invno, duedate, SUM(payab_amt)AS payab_amt From[" + name + "$] " +
+                    " WHERE payab_amt > 0 GROUP BY mecode, me, conno, schno, st_schmon, tinv_no,  invno, duedate ", con);
                 con.Open();
 
                 OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
                     DataTable data = new DataTable();
                 sda.Fill(data);
+                con.Close();
+                //data = data.AsEnumerable()
+                //.GroupBy(r => new { Col1 = r["Col1"], Col2 = r["Col2"] })
+                //.Select(g => g.OrderBy(r => r["PK"]).First())
+                //.CopyToDataTable();
 
                 foreach (DataRow dr in data.Rows)
                 {

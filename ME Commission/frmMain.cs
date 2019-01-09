@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
 using System.Xml.Linq;
+using System.Data.SqlClient;
 
 namespace ME_Commission
 {
@@ -51,19 +52,31 @@ namespace ME_Commission
                     DataTable data = new DataTable();
                 sda.Fill(data);
                 con.Close();
-                //data = data.AsEnumerable()
-                //.GroupBy(r => new { Col1 = r["Col1"], Col2 = r["Col2"] })
-                //.Select(g => g.OrderBy(r => r["PK"]).First())
-                //.CopyToDataTable();
 
-                foreach (DataRow dr in data.Rows)
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy("Data Source = DELLWORK; Initial Catalog = RC; User ID = sa; Password = Vx@7190"))
                 {
-                    if (Convert.ToDouble(dr[3])>0)
-                    {
-                        var ddd = 0;
+                    bulkCopy.DestinationTableName =
+                        "dbo.RECOVERY_PAYMENT";
 
+                    try
+                    {
+                        // Write from the source to the destination.
+                        bulkCopy.WriteToServer(data);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
                     }
                 }
+
+                //foreach (DataRow dr in data.Rows)
+                //{
+                //    if (Convert.ToDouble(dr[3])>0)
+                //    {
+                //        var ddd = 0;
+
+                //    }
+                //}
 
 
                 //grid_items.DataSource = data;

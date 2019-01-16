@@ -30,9 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbImport = new System.Windows.Forms.ToolStripButton();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbImport = new System.Windows.Forms.ToolStripButton();
+            this.tblImportMri = new System.Windows.Forms.ToolStripButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,12 +43,18 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
-            this.tsbImport});
+            this.tsbImport,
+            this.tblImportMri});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 39);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // tsbImport
             // 
@@ -59,14 +66,19 @@
             this.tsbImport.Text = "Import";
             this.tsbImport.Click += new System.EventHandler(this.tsbImport_Click);
             // 
+            // tblImportMri
+            // 
+            this.tblImportMri.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tblImportMri.Image = ((System.Drawing.Image)(resources.GetObject("tblImportMri.Image")));
+            this.tblImportMri.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tblImportMri.Name = "tblImportMri";
+            this.tblImportMri.Size = new System.Drawing.Size(36, 36);
+            this.tblImportMri.Text = "Import";
+            this.tblImportMri.Click += new System.EventHandler(this.tblImportMri_Click);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // frmMain
             // 
@@ -92,5 +104,6 @@
         private System.Windows.Forms.ToolStripButton tsbImport;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tblImportMri;
     }
 }
